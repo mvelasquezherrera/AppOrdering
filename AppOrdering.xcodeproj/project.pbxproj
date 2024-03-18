@@ -25,6 +25,15 @@
 		2F7904842BA7654A001CFC2D /* Zone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7904832BA7654A001CFC2D /* Zone.swift */; };
 		2F7904862BA76559001CFC2D /* Center.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7904852BA76559001CFC2D /* Center.swift */; };
 		2F7904882BA76579001CFC2D /* Pivot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7904872BA76579001CFC2D /* Pivot.swift */; };
+		2F7904902BA78935001CFC2D /* BusinessViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F79048F2BA78935001CFC2D /* BusinessViewProtocol.swift */; };
+		2F7904922BA78961001CFC2D /* BusinessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7904912BA78961001CFC2D /* BusinessViewController.swift */; };
+		2F7904942BA78A1F001CFC2D /* ListBusinessAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7904932BA78A1F001CFC2D /* ListBusinessAdapter.swift */; };
+		2F7904962BA78A58001CFC2D /* BusinessViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7904952BA78A58001CFC2D /* BusinessViewPresenter.swift */; };
+		2F7904982BA78AD7001CFC2D /* ListBusinessSimpleAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7904972BA78AD7001CFC2D /* ListBusinessSimpleAdapter.swift */; };
+		2F79049B2BA78B5D001CFC2D /* BusinessTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7904992BA78B5D001CFC2D /* BusinessTableViewCell.swift */; };
+		2F79049C2BA78B5D001CFC2D /* BusinessTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F79049A2BA78B5D001CFC2D /* BusinessTableViewCell.xib */; };
+		2F79049E2BA78CBB001CFC2D /* BusinessViewPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F79049D2BA78CBB001CFC2D /* BusinessViewPresenterProtocol.swift */; };
+		2F7904A02BA80910001CFC2D /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F79049F2BA80910001CFC2D /* Utils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +57,15 @@
 		2F7904832BA7654A001CFC2D /* Zone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Zone.swift; sourceTree = "<group>"; };
 		2F7904852BA76559001CFC2D /* Center.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Center.swift; sourceTree = "<group>"; };
 		2F7904872BA76579001CFC2D /* Pivot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pivot.swift; sourceTree = "<group>"; };
+		2F79048F2BA78935001CFC2D /* BusinessViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessViewProtocol.swift; sourceTree = "<group>"; };
+		2F7904912BA78961001CFC2D /* BusinessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessViewController.swift; sourceTree = "<group>"; };
+		2F7904932BA78A1F001CFC2D /* ListBusinessAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListBusinessAdapter.swift; sourceTree = "<group>"; };
+		2F7904952BA78A58001CFC2D /* BusinessViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessViewPresenter.swift; sourceTree = "<group>"; };
+		2F7904972BA78AD7001CFC2D /* ListBusinessSimpleAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListBusinessSimpleAdapter.swift; sourceTree = "<group>"; };
+		2F7904992BA78B5D001CFC2D /* BusinessTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessTableViewCell.swift; sourceTree = "<group>"; };
+		2F79049A2BA78B5D001CFC2D /* BusinessTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BusinessTableViewCell.xib; sourceTree = "<group>"; };
+		2F79049D2BA78CBB001CFC2D /* BusinessViewPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessViewPresenterProtocol.swift; sourceTree = "<group>"; };
+		2F79049F2BA80910001CFC2D /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +98,7 @@
 		2F2A018B2BA6B6DC00030D2A /* AppOrdering */ = {
 			isa = PBXGroup;
 			children = (
+				2F7904892BA7889E001CFC2D /* Classes */,
 				2F2A01A82BA6BC5200030D2A /* Utils */,
 				2F2A01A32BA6BA4900030D2A /* DTO */,
 				2F2A01A02BA6B99500030D2A /* Data */,
@@ -123,8 +142,64 @@
 			children = (
 				2F2A01A92BA6BC5D00030D2A /* Enums.swift */,
 				2F2A01AB2BA6BC7A00030D2A /* Constants.swift */,
+				2F79049F2BA80910001CFC2D /* Utils.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		2F7904892BA7889E001CFC2D /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				2F79048A2BA788A4001CFC2D /* Business */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		2F79048A2BA788A4001CFC2D /* Business */ = {
+			isa = PBXGroup;
+			children = (
+				2F79048B2BA788AC001CFC2D /* List */,
+			);
+			path = Business;
+			sourceTree = "<group>";
+		};
+		2F79048B2BA788AC001CFC2D /* List */ = {
+			isa = PBXGroup;
+			children = (
+				2F79048E2BA7892B001CFC2D /* Protocols */,
+				2F79048D2BA788D2001CFC2D /* Adapters */,
+				2F79048C2BA788C9001CFC2D /* Presenters */,
+				2F7904912BA78961001CFC2D /* BusinessViewController.swift */,
+				2F7904992BA78B5D001CFC2D /* BusinessTableViewCell.swift */,
+				2F79049A2BA78B5D001CFC2D /* BusinessTableViewCell.xib */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		2F79048C2BA788C9001CFC2D /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+				2F7904952BA78A58001CFC2D /* BusinessViewPresenter.swift */,
+				2F79049D2BA78CBB001CFC2D /* BusinessViewPresenterProtocol.swift */,
+			);
+			path = Presenters;
+			sourceTree = "<group>";
+		};
+		2F79048D2BA788D2001CFC2D /* Adapters */ = {
+			isa = PBXGroup;
+			children = (
+				2F7904932BA78A1F001CFC2D /* ListBusinessAdapter.swift */,
+				2F7904972BA78AD7001CFC2D /* ListBusinessSimpleAdapter.swift */,
+			);
+			path = Adapters;
+			sourceTree = "<group>";
+		};
+		2F79048E2BA7892B001CFC2D /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				2F79048F2BA78935001CFC2D /* BusinessViewProtocol.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -186,6 +261,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F2A01962BA6B6DE00030D2A /* Assets.xcassets in Resources */,
+				2F79049C2BA78B5D001CFC2D /* BusinessTableViewCell.xib in Resources */,
 				2F2A01992BA6B6DE00030D2A /* Base in Resources */,
 				2F2A01942BA6B6DC00030D2A /* Base in Resources */,
 			);
@@ -199,20 +275,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F2A01912BA6B6DC00030D2A /* ViewController.swift in Sources */,
+				2F7904922BA78961001CFC2D /* BusinessViewController.swift in Sources */,
+				2F7904962BA78A58001CFC2D /* BusinessViewPresenter.swift in Sources */,
+				2F79049E2BA78CBB001CFC2D /* BusinessViewPresenterProtocol.swift in Sources */,
 				2F79047E2BA76513001CFC2D /* Today.swift in Sources */,
 				2F7904862BA76559001CFC2D /* Center.swift in Sources */,
 				2F2A01A22BA6B9E600030D2A /* BusinessService.swift in Sources */,
 				2F7904802BA76526001CFC2D /* Lapse.swift in Sources */,
 				2F7904822BA76539001CFC2D /* Close.swift in Sources */,
+				2F79049B2BA78B5D001CFC2D /* BusinessTableViewCell.swift in Sources */,
 				2F2A01A52BA6BA7800030D2A /* BusinessResponse.swift in Sources */,
 				2F2A018D2BA6B6DC00030D2A /* AppDelegate.swift in Sources */,
 				2F2A01AA2BA6BC5D00030D2A /* Enums.swift in Sources */,
 				2F2A018F2BA6B6DC00030D2A /* SceneDelegate.swift in Sources */,
 				2F79047C2BA764FD001CFC2D /* Business.swift in Sources */,
+				2F7904A02BA80910001CFC2D /* Utils.swift in Sources */,
 				2F2A01A72BA6BBE600030D2A /* BusinessServiceProtocol.swift in Sources */,
 				2F2A01AC2BA6BC7A00030D2A /* Constants.swift in Sources */,
 				2F7904842BA7654A001CFC2D /* Zone.swift in Sources */,
+				2F7904902BA78935001CFC2D /* BusinessViewProtocol.swift in Sources */,
+				2F7904982BA78AD7001CFC2D /* ListBusinessSimpleAdapter.swift in Sources */,
 				2F7904882BA76579001CFC2D /* Pivot.swift in Sources */,
+				2F7904942BA78A1F001CFC2D /* ListBusinessAdapter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
