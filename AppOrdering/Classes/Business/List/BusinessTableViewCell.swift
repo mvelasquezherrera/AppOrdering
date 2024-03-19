@@ -38,6 +38,7 @@ class BusinessTableViewCell: UITableViewCell {
         
         lblTitle.text = business.name
         lblTitle.font = UIFont.boldSystemFont(ofSize: 16)
+        lblTitle.numberOfLines = 0
         imgFavorite.image = UIImage(systemName: (business.favorite ?? false) ? "star.fill" : "star")
         imgFavorite.tintColor = UIColor.systemYellow
         viewOpenOrClose.backgroundColor = (business.resultOpen ?? false) ? UIColor.systemGreen : UIColor.red
