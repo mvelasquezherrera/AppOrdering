@@ -3,6 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <capability name="Map view configurations" minToolsVersion="14.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -112,7 +113,7 @@
                                                                                 </constraints>
                                                                             </view>
                                                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="X1U-V7-T1v">
-                                                                                <rect key="frame" x="0.0" y="97.333333333333314" width="94.666666666666671" height="24"/>
+                                                                                <rect key="frame" x="0.0" y="97.333333333333314" width="107" height="24"/>
                                                                                 <subviews>
                                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ziP-O6-0pc">
                                                                                         <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
@@ -121,12 +122,14 @@
                                                                                             <constraint firstAttribute="height" constant="24" id="iUQ-JC-XM4"/>
                                                                                         </constraints>
                                                                                     </imageView>
-                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="an7-hs-D7G">
-                                                                                        <rect key="frame" x="31.999999999999996" y="0.0" width="62.666666666666643" height="24"/>
-                                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                                        <nil key="textColor"/>
-                                                                                        <nil key="highlightedColor"/>
-                                                                                    </label>
+                                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bGq-em-6y1">
+                                                                                        <rect key="frame" x="32" y="0.0" width="75" height="24"/>
+                                                                                        <state key="normal" title="Button"/>
+                                                                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                                                                        <connections>
+                                                                                            <action selector="btnAddressAction:" destination="goF-py-fPB" eventType="touchUpInside" id="Lt3-mJ-BDa"/>
+                                                                                        </connections>
+                                                                                    </button>
                                                                                 </subviews>
                                                                             </stackView>
                                                                         </subviews>
@@ -236,13 +239,13 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="btnAddress" destination="bGq-em-6y1" id="fRz-CJ-4wE"/>
                         <outlet property="btnCellphone" destination="kfa-oh-kWf" id="YDY-L2-hqL"/>
                         <outlet property="btnPhone" destination="sat-iV-mLk" id="gr2-xO-RNa"/>
                         <outlet property="imgAddress" destination="ziP-O6-0pc" id="ur8-ho-1LQ"/>
                         <outlet property="imgBusinessBackground" destination="jkk-Ot-ZNy" id="HXx-tB-ne7"/>
                         <outlet property="imgFavorite" destination="Ypg-B5-Y1v" id="eQi-IZ-H1K"/>
                         <outlet property="imgLogo" destination="vrd-YA-7y3" id="CbG-Wt-F1h"/>
-                        <outlet property="lblAddress" destination="an7-hs-D7G" id="TYb-Xh-dQR"/>
                         <outlet property="lblDeliveryName" destination="YVP-if-QpP" id="fzh-q0-FeO"/>
                         <outlet property="lblDeliveryPrice" destination="YGh-rr-hdg" id="CYZ-dB-Fgw"/>
                         <outlet property="lblName" destination="Qlo-IM-IER" id="5wX-Ka-Qr5"/>
@@ -256,20 +259,38 @@
             </objects>
             <point key="canvasLocation" x="1752" y="-18"/>
         </scene>
-        <!--View Controller-->
+        <!--Map View Controller-->
         <scene sceneID="Xjl-Le-tZg">
             <objects>
-                <viewController id="3Hb-kF-j55" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapViewController" id="3Hb-kF-j55" customClass="MapViewController" customModule="AppOrdering" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qbQ-X7-vjD">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FOT-Fb-gvF">
+                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <standardMapConfiguration key="preferredConfiguration"/>
+                                <connections>
+                                    <outlet property="delegate" destination="3Hb-kF-j55" id="f6V-JR-8bK"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="L99-u5-o6S"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="L99-u5-o6S" firstAttribute="trailing" secondItem="FOT-Fb-gvF" secondAttribute="trailing" id="EkZ-9t-juA"/>
+                            <constraint firstItem="FOT-Fb-gvF" firstAttribute="top" secondItem="L99-u5-o6S" secondAttribute="top" id="K7M-O4-TAX"/>
+                            <constraint firstItem="FOT-Fb-gvF" firstAttribute="leading" secondItem="L99-u5-o6S" secondAttribute="leading" id="e5j-sT-qI4"/>
+                            <constraint firstItem="L99-u5-o6S" firstAttribute="bottom" secondItem="FOT-Fb-gvF" secondAttribute="bottom" id="nrp-8j-GFe"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="FOT-Fb-gvF" id="5EZ-F5-n6O"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pR3-pT-r6Y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2511" y="-4"/>
+            <point key="canvasLocation" x="2511" y="-18"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="qYr-r8-4Lf">

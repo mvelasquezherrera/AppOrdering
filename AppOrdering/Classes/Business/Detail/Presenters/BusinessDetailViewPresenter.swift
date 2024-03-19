@@ -24,10 +24,6 @@ extension BusinessDetailViewPresenter {
         self.getDetail()
     }
     
-    func backController() {
-        self.controller.backController()
-    }
-    
 }
 
 extension BusinessDetailViewPresenter {

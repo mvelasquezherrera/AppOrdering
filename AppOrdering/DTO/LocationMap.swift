@@ -6,3 +6,12 @@
 //
 
 import Foundation
+
+// MARK: - LocationMap
+struct LocationMap {
+    var latitude: Double
+    var longitude: Double
+    var zoom: Int
+    var titlePin: String
+    var subtitlePin: String
+}

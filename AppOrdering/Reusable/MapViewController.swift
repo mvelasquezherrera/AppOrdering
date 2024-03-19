@@ -6,24 +6,53 @@
 //
 
 import UIKit
+import MapKit
 
-class MapViewController: UIViewController {
+class MapViewController: UIViewController, MKMapViewDelegate {
+    
+    @IBOutlet private weak var mapView: MKMapView!
+    
+    var locationMap: LocationMap?
+    
+}
 
+extension MapViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.navigationController?.navigationBar.prefersLargeTitles = false
+        self.title = "Map"
+        self.mapView.delegate = self
+        if let locationMap {
+            updateData(locationMap)
+        }
     }
     
+}
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+extension MapViewController {
+    
+    func updateData(_ locationMap: LocationMap) {
+        let location = CLLocationCoordinate2D(latitude: locationMap.latitude, longitude: locationMap.longitude)
+        let region = MKCoordinateRegion(center: location, latitudinalMeters: CLLocationDistance(locationMap.zoom), longitudinalMeters: CLLocationDistance(locationMap.zoom))
+        mapView.setRegion(region, animated: true)
+        
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = location
+        annotation.title = locationMap.titlePin
+        annotation.subtitle = locationMap.subtitlePin
+        mapView.addAnnotation(annotation)
     }
-    */
+    
+}
 
+extension MapViewController {
+    
+    class func buildMapView() -> MapViewController {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let controller = storyboard.instantiateViewController(withIdentifier: "MapViewController") as? MapViewController else {
+            return MapViewController()
+        }
+        return controller
+    }
 }

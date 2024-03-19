@@ -17,7 +17,7 @@ class BusinessDetailViewController: UIViewController {
     @IBOutlet private weak var viewOpenClose: UIView!
     @IBOutlet private weak var lblOpenClose: UILabel!
     @IBOutlet private weak var imgAddress: UIImageView!
-    @IBOutlet private weak var lblAddress: UILabel!
+    @IBOutlet private weak var btnAddress: UIButton!
     @IBOutlet private weak var lblDeliveryPrice: UILabel!
     @IBOutlet private weak var lblDeliveryName: UILabel!
     @IBOutlet private weak var lblSchedule: UILabel!
@@ -41,6 +41,10 @@ extension BusinessDetailViewController {
 // MARK: - @IBAction
 extension BusinessDetailViewController {
     
+    @IBAction private func btnAddressAction(_ sender: UIButton) {
+        goToMapView()
+    }
+    
     @IBAction private func btnPhoneAction(_ sender: UIButton) {
         Utils.callPhone(number: business.phone ?? "")
     }
@@ -52,83 +56,82 @@ extension BusinessDetailViewController {
 
 extension BusinessDetailViewController {
     
-    func backController() {
-        self.navigationController?.popViewController(animated: true)
-    }
-    
     func updateData(_ business: BusinessDetailResult) {
         self.business = business
         DispatchQueue.main.async {
-            if let urlHeader = URL(string: business.header ?? "") {
-                Utils.downloadImage(url: urlHeader) { [weak self] imagen in
-                    if let downloadImage = imagen {
-                        DispatchQueue.main.async {
-                            self?.imgBusinessBackground.image = downloadImage
+            self.title = business.name ?? ""
+            DispatchQueue.main.async {
+                if let urlHeader = URL(string: business.header ?? "") {
+                    Utils.downloadImage(url: urlHeader) { [weak self] imagen in
+                        if let downloadImage = imagen {
+                            DispatchQueue.main.async {
+                                self?.imgBusinessBackground.image = downloadImage
+                            }
+                        } else {
+                            print("Error al descargar la imagen desde la URL: \(urlHeader)")
                         }
-                    } else {
-                        print("Error al descargar la imagen desde la URL: \(urlHeader)")
                     }
                 }
-            }
-            
-            if let urlLogo = URL(string: business.logo ?? "") {
-                Utils.downloadImage(url: urlLogo) { [weak self] imagen in
-                    if let downloadImage = imagen {
-                        DispatchQueue.main.async {
-                            self?.imgLogo.image = downloadImage
+                
+                if let urlLogo = URL(string: business.logo ?? "") {
+                    Utils.downloadImage(url: urlLogo) { [weak self] imagen in
+                        if let downloadImage = imagen {
+                            DispatchQueue.main.async {
+                                self?.imgLogo.image = downloadImage
+                            }
+                        } else {
+                            print("Error al descargar la imagen desde la URL: \(urlLogo)")
                         }
-                    } else {
-                        print("Error al descargar la imagen desde la URL: \(urlLogo)")
                     }
                 }
+                
+                self.lblName.text = business.name ?? ""
+                self.imgFavorite.image = UIImage(systemName: (business.favorite ?? false) ? "star.fill" : "star")
+                
+                self.viewOpenClose.backgroundColor = (business.resultOpen ?? false) ? UIColor.systemGreen : UIColor.red
+                self.lblOpenClose.text = (business.resultOpen ?? false) ? "Abierto" : "Cerrado"
+                
+                let hourOpen = business.today?.lapses[0]?.lapseOpen?.hour ?? 0
+                let minuteOpen = business.today?.lapses[0]?.lapseOpen?.minute ?? 0
+                let hourClose = business.today?.lapses[0]?.close?.hour ?? 0
+                let minuteClose = business.today?.lapses[0]?.close?.minute ?? 0
+                let open = Utils.formatearHora(hora: hourOpen, minuto: minuteOpen) ?? ""
+                let close = Utils.formatearHora(hora: hourClose, minuto: minuteClose) ?? ""
+                let scheduleComplete = "\(String(describing: open))hrs - \(String(describing: close))hrs"
+                
+                let startAttributed = NSMutableAttributedString(string: "Horario (Hoy): ", attributes: [
+                    .font : UIFont.systemFont(ofSize: 14)
+                ])
+                let endAttributed = NSMutableAttributedString(string: scheduleComplete, attributes: [
+                    .font : UIFont.boldSystemFont(ofSize: 14)
+                ])
+                startAttributed.append(endAttributed)
+                self.lblSchedule.attributedText = startAttributed
+                
+                let addressAttributed = NSMutableAttributedString(string: business.address ?? "", attributes: [
+                    .font : UIFont.boldSystemFont(ofSize: 16),
+                    .underlineStyle : NSUnderlineStyle.single.rawValue
+                ])
+                
+                self.btnAddress.setAttributedTitle(addressAttributed, for: .normal)
+                
+                self.lblDeliveryPrice.isHidden = business.deliveryPrice == nil
+                self.lblDeliveryPrice.text = (business.deliveryPrice == 0) ? "Envío gratis" : "$\(String(describing: business.deliveryPrice))"
+                self.lblDeliveryPrice.font = (business.deliveryPrice == 0) ? UIFont.boldSystemFont(ofSize: 14) : UIFont.systemFont(ofSize: 14)
+                self.lblDeliveryPrice.textColor = (business.deliveryPrice == 0) ? UIColor.systemGreen : UIColor.black
+                
+                self.lblDeliveryName.text = business.deliveryName ?? ""
+                
+                
+                if let numberPhone = business.phone, !numberPhone.isEmpty {
+                    self.btnPhone.setTitle("Llamar a \(numberPhone)", for: .normal)
+                }
+                
+                if let numberCellphone = business.cellphone, !numberCellphone.isEmpty {
+                    self.btnCellphone.setTitle("Llamar a \(numberCellphone)", for: .normal)
+                }
+                
             }
-            
-            self.lblName.text = business.name ?? ""
-            self.imgFavorite.image = UIImage(systemName: (business.favorite ?? false) ? "star.fill" : "star")
-            
-            self.viewOpenClose.backgroundColor = (business.resultOpen ?? false) ? UIColor.systemGreen : UIColor.red
-            self.lblOpenClose.text = (business.resultOpen ?? false) ? "Abierto" : "Cerrado"
-            
-            let hourOpen = business.today?.lapses[0]?.lapseOpen?.hour ?? 0
-            let minuteOpen = business.today?.lapses[0]?.lapseOpen?.minute ?? 0
-            let hourClose = business.today?.lapses[0]?.close?.hour ?? 0
-            let minuteClose = business.today?.lapses[0]?.close?.minute ?? 0
-            let open = Utils.formatearHora(hora: hourOpen, minuto: minuteOpen) ?? ""
-            let close = Utils.formatearHora(hora: hourClose, minuto: minuteClose) ?? ""
-            let scheduleComplete = "\(String(describing: open))hrs - \(String(describing: close))hrs"
-            
-            let startAttributed = NSMutableAttributedString(string: "Horario (Hoy): ", attributes: [
-                .font : UIFont.systemFont(ofSize: 14)
-            ])
-            let endAttributed = NSMutableAttributedString(string: scheduleComplete, attributes: [
-                .font : UIFont.boldSystemFont(ofSize: 14)
-            ])
-            startAttributed.append(endAttributed)
-            self.lblSchedule.attributedText = startAttributed
-            
-            let addressAttributed = NSMutableAttributedString(string: business.address ?? "", attributes: [
-                .font : UIFont.boldSystemFont(ofSize: 16),
-                .underlineStyle : NSUnderlineStyle.single.rawValue
-            ])
-            
-            self.lblAddress.attributedText = addressAttributed
-            
-            self.lblDeliveryPrice.isHidden = business.deliveryPrice == nil
-            self.lblDeliveryPrice.text = (business.deliveryPrice == 0) ? "Envío gratis" : "$\(String(describing: business.deliveryPrice))"
-            self.lblDeliveryPrice.font = (business.deliveryPrice == 0) ? UIFont.boldSystemFont(ofSize: 14) : UIFont.systemFont(ofSize: 14)
-            self.lblDeliveryPrice.textColor = (business.deliveryPrice == 0) ? UIColor.systemGreen : UIColor.black
-            
-            self.lblDeliveryName.text = business.deliveryName ?? ""
-            
-            
-            if let numberPhone = business.phone, !numberPhone.isEmpty {
-                self.btnPhone.setTitle("Llamar a \(numberPhone)", for: .normal)
-            }
-            
-            if let numberCellphone = business.cellphone, !numberCellphone.isEmpty {
-                self.btnCellphone.setTitle("Llamar a \(numberCellphone)", for: .normal)
-            }
-            
         }
     }
     
@@ -157,6 +160,23 @@ extension BusinessDetailViewController {
             self.scrollContent.isHidden = isLoading
         }
     }
+}
+
+// MARK: - ROUTES
+extension BusinessDetailViewController {
+    
+    func goToMapView() {
+        let controller = MapViewController.buildMapView()
+        let locationMap = LocationMap(
+            latitude: business.location?.lat ?? 0.0,
+            longitude: business.location?.lng ?? 0.0,
+            zoom: (business.location?.zoom ?? 0) * 1000,
+            titlePin: business.name ?? "",
+            subtitlePin: business.address ?? "")
+        controller.locationMap = locationMap
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
 }
 
 extension BusinessDetailViewController {
