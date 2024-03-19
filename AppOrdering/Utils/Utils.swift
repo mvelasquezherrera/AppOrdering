@@ -54,4 +54,12 @@ class Utils {
         task.resume()
     }
     
+    static func callPhone(number: String) {
+        if let url = URL(string: "tel://\(number)"), UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            print("No se pudo realizar la llamada.")
+        }
+    }
+    
 }

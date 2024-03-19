@@ -54,7 +54,7 @@ class BusinessTableViewCell: UITableViewCell {
         let close = Utils.formatearHora(hora: hourClose, minuto: minuteClose) ?? ""
         let scheduleComplete = "\(String(describing: open))hrs - \(String(describing: close))hrs"
         
-        let startAttributed = NSMutableAttributedString(string: "Horario: ", attributes: [
+        let startAttributed = NSMutableAttributedString(string: "Horario (Hoy): ", attributes: [
             .font : UIFont.systemFont(ofSize: 14)
         ])
         let endAttributed = NSMutableAttributedString(string: scheduleComplete, attributes: [

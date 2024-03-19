@@ -46,6 +46,9 @@ extension ListBusinessSimpleAdapter: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        if let business = self.arrayData[indexPath.row] as? Business {
+            self.controller.goToDetailBusiness(business)
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

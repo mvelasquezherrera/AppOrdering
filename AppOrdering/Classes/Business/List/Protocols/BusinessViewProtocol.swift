@@ -9,6 +9,7 @@ import Foundation
 
 protocol BusinessViewProtocol: NSObjectProtocol {
     func reloadTableWithData(_ arrayData: [Any])
+    func goToDetailBusiness(_ business: Business)
     func setupAdapters()
     func addPullToRefresh()
     func showLoading(_ isShow: Bool)

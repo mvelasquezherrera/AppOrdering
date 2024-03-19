@@ -61,6 +61,11 @@ extension BusinessViewController: BusinessViewProtocol {
         self.listAdapter.setTableView(self.tlvBusiness)
     }
     
+    func goToDetailBusiness(_ business: Business) {
+        let controller = BusinessDetailViewController.buildWithIdBusiness(business.id ?? 0)
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
     func reloadTableWithData(_ arrayData: [Any]) {
         DispatchQueue.main.async {
             self.listAdapter.arrayData = arrayData

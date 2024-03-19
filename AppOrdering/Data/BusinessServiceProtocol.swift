@@ -7,9 +7,11 @@
 
 import Foundation
 
-typealias BusinessHandler = (Result<BusisnessResponse, Error>) -> Void
+typealias BusinessesHandler = (Result<BusisnessResponse, Error>) -> Void
+typealias BusinessHandler = (Result<BusinessDetailResponse, Error>) -> Void
 
 protocol BusinessServiceProtocol {
-    func fetchBusinesses(completion: @escaping BusinessHandler)
+    func fetchBusinesses(completion: @escaping BusinessesHandler)
+    func getDetailBusiness(_ idBusiness: Int, completion: @escaping BusinessHandler)
 }
 
