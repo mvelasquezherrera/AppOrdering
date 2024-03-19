@@ -10,8 +10,10 @@ import UIKit
 class BusinessViewController: UIViewController {
     
     @IBOutlet private weak var tlvBusiness: UITableView!
+    @IBOutlet private weak var searchBarBusiness: UISearchBar!
     
     private var listAdapter: ListBusinessAdapter!
+    private var searchAdapter: SearchBusinessAdapter!
     private var presenter: BusinessViewPresenterProtocol!
     
     lazy var refreshControl: UIRefreshControl = {
@@ -30,6 +32,7 @@ extension BusinessViewController {
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.presenter = BusinessViewPresenter(controller: self)
         self.listAdapter = ListBusinessSimpleAdapter(controller: self)
+        self.searchAdapter = SearchBusinessAdapter(controller: self)
         self.presenter.didLoad()
     }
     
@@ -59,6 +62,7 @@ extension BusinessViewController: BusinessViewProtocol {
     
     func setupAdapters() {
         self.listAdapter.setTableView(self.tlvBusiness)
+        self.searchAdapter.setSearchBar(self.searchBarBusiness)
     }
     
     func goToDetailBusiness(_ business: Business) {
@@ -72,4 +76,9 @@ extension BusinessViewController: BusinessViewProtocol {
             self.tlvBusiness.reloadData()
         }
     }
+    
+    func reloadSearchWithData(_ arrayData: [Business]) {
+        self.searchAdapter.arrayData = arrayData
+    }
+    
 }

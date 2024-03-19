@@ -41,6 +41,7 @@ extension BusinessViewPresenter {
             switch result {
             case .success(let arrayBusinesses):
                 self.controller.showLoading(false)
+                self.controller.reloadSearchWithData(arrayBusinesses.result)
                 self.controller.reloadTableWithData(arrayBusinesses.result)
             case .failure(_): break
             }

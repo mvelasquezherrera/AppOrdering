@@ -12,5 +12,6 @@ protocol BusinessViewProtocol: NSObjectProtocol {
     func goToDetailBusiness(_ business: Business)
     func setupAdapters()
     func addPullToRefresh()
+    func reloadSearchWithData(_ arrayData: [Business])
     func showLoading(_ isShow: Bool)
 }

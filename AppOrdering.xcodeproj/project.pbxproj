@@ -51,6 +51,9 @@
 		2F73DFD62BA969420072EA6F /* ZonePivot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F73DFD52BA969420072EA6F /* ZonePivot.swift */; };
 		2F73DFD92BA969CA0072EA6F /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F73DFD82BA969CA0072EA6F /* MapViewController.swift */; };
 		2F73DFDB2BA96B890072EA6F /* LocationMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F73DFDA2BA96B890072EA6F /* LocationMap.swift */; };
+		2F73DFDD2BA9715E0072EA6F /* SearchBusinessAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F73DFDC2BA9715E0072EA6F /* SearchBusinessAdapter.swift */; };
+		2F73DFE22BA9759A0072EA6F /* SearchErrorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F73DFE02BA9759A0072EA6F /* SearchErrorTableViewCell.swift */; };
+		2F73DFE32BA9759A0072EA6F /* SearchErrorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F73DFE12BA9759A0072EA6F /* SearchErrorTableViewCell.xib */; };
 		2F79047C2BA764FD001CFC2D /* Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F79047B2BA764FD001CFC2D /* Business.swift */; };
 		2F79047E2BA76513001CFC2D /* Today.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F79047D2BA76513001CFC2D /* Today.swift */; };
 		2F7904802BA76526001CFC2D /* Lapse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F79047F2BA76526001CFC2D /* Lapse.swift */; };
@@ -116,6 +119,9 @@
 		2F73DFD52BA969420072EA6F /* ZonePivot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZonePivot.swift; sourceTree = "<group>"; };
 		2F73DFD82BA969CA0072EA6F /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		2F73DFDA2BA96B890072EA6F /* LocationMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationMap.swift; sourceTree = "<group>"; };
+		2F73DFDC2BA9715E0072EA6F /* SearchBusinessAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBusinessAdapter.swift; sourceTree = "<group>"; };
+		2F73DFE02BA9759A0072EA6F /* SearchErrorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchErrorTableViewCell.swift; sourceTree = "<group>"; };
+		2F73DFE12BA9759A0072EA6F /* SearchErrorTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchErrorTableViewCell.xib; sourceTree = "<group>"; };
 		2F79047B2BA764FD001CFC2D /* Business.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Business.swift; sourceTree = "<group>"; };
 		2F79047D2BA76513001CFC2D /* Today.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Today.swift; sourceTree = "<group>"; };
 		2F79047F2BA76526001CFC2D /* Lapse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lapse.swift; sourceTree = "<group>"; };
@@ -295,6 +301,8 @@
 				2F7904912BA78961001CFC2D /* BusinessViewController.swift */,
 				2F7904992BA78B5D001CFC2D /* BusinessTableViewCell.swift */,
 				2F79049A2BA78B5D001CFC2D /* BusinessTableViewCell.xib */,
+				2F73DFE02BA9759A0072EA6F /* SearchErrorTableViewCell.swift */,
+				2F73DFE12BA9759A0072EA6F /* SearchErrorTableViewCell.xib */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -313,6 +321,7 @@
 			children = (
 				2F7904932BA78A1F001CFC2D /* ListBusinessAdapter.swift */,
 				2F7904972BA78AD7001CFC2D /* ListBusinessSimpleAdapter.swift */,
+				2F73DFDC2BA9715E0072EA6F /* SearchBusinessAdapter.swift */,
 			);
 			path = Adapters;
 			sourceTree = "<group>";
@@ -386,6 +395,7 @@
 				2F2A01962BA6B6DE00030D2A /* Assets.xcassets in Resources */,
 				2F79049C2BA78B5D001CFC2D /* BusinessTableViewCell.xib in Resources */,
 				2F2A01992BA6B6DE00030D2A /* Base in Resources */,
+				2F73DFE32BA9759A0072EA6F /* SearchErrorTableViewCell.xib in Resources */,
 				2F2A01942BA6B6DC00030D2A /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -401,6 +411,7 @@
 				2F73DF9E2BA91EAF0072EA6F /* BusinessDetailResponse.swift in Sources */,
 				2F7904922BA78961001CFC2D /* BusinessViewController.swift in Sources */,
 				2F7904962BA78A58001CFC2D /* BusinessViewPresenter.swift in Sources */,
+				2F73DFE22BA9759A0072EA6F /* SearchErrorTableViewCell.swift in Sources */,
 				2F73DFB02BA968340072EA6F /* ProductPivot.swift in Sources */,
 				2F79049E2BA78CBB001CFC2D /* BusinessViewPresenterProtocol.swift in Sources */,
 				2F73DFA82BA967F60072EA6F /* Extra.swift in Sources */,
@@ -432,6 +443,7 @@
 				2F2A01AA2BA6BC5D00030D2A /* Enums.swift in Sources */,
 				2F2A018F2BA6B6DC00030D2A /* SceneDelegate.swift in Sources */,
 				2F73DFD92BA969CA0072EA6F /* MapViewController.swift in Sources */,
+				2F73DFDD2BA9715E0072EA6F /* SearchBusinessAdapter.swift in Sources */,
 				2F79047C2BA764FD001CFC2D /* Business.swift in Sources */,
 				2F73DFB62BA9685B0072EA6F /* Country.swift in Sources */,
 				2F73DF9A2BA91C710072EA6F /* BusinessDetailViewController.swift in Sources */,

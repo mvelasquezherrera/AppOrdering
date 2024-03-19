@@ -20,7 +20,7 @@ class ListBusinessSimpleAdapter: NSObject, ListBusinessAdapter {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(BusinessTableViewCell.nib(), forCellReuseIdentifier: BusinessTableViewCell.identifier)
-
+        tableView.register(SearchErrorTableViewCell.nib(), forCellReuseIdentifier: SearchErrorTableViewCell.identifier)
     }
 }
 
@@ -36,6 +36,8 @@ extension ListBusinessSimpleAdapter: UITableViewDataSource {
         
         if let business = item as? Business {
             return BusinessTableViewCell.createCell(tableView, indexPath: indexPath, business: business)
+        } else if let errorMessage = item as? String {
+            return SearchErrorTableViewCell.createCell(tableView, indexPath: indexPath, errorMessage: errorMessage)
         } else {
             return UITableViewCell()
         }
